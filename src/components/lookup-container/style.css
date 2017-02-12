@@ -76,3 +76,16 @@
 	background-color: hsl(201,60%,70%);
 	background-image: url(res/close-@2x.png);
 }
+
+
+.lookup-container.no-endpoint .url-part:last-child {
+	max-width: 100%;
+	flex-grow: 1;
+	flex-shrink: 0;
+	align-self: auto;
+}
+
+.lookup-container.no-endpoint .url-part:last-child > div,
+.lookup-container.no-endpoint .url-part:last-child > div > input {
+	width: 100% !important;
+}
