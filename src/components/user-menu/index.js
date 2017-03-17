@@ -31,9 +31,11 @@ const UserMenu = ( { apiName, isReady, isLoggedin, login, logout, user } ) => {
 		<div className="user-menu authorized" onClick={ logoutCallback }>
 			<span className="label" />
 			<span className="extra">Sign Out</span>
-			<span className="img">
-				<img alt="Avatar" src={ user.avatarUrl } />
-			</span>
+			{ user.avatarUrl && (
+				<span className="img">
+					<img alt="Avatar" src={ user.avatarUrl } />
+				</span>
+			) }
 		</div>
 	);
 };
