@@ -1,0 +1,9 @@
+{
+  "woocommerce": [
+    {
+      "name": "Woo",
+      "url": "https://woo.dev",
+      "authHeader": "Basic <header>", // run in terminal: echo -n 'client_key:client_secret' | base64
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 import config from '../config';
 import createCoreApi from './core';
+import createWooCommerceApi from './woocommerce';
 import createDotComApi from './com';
 import createOauth2Provider from '../auth/oauth2';
 import createOauth1Provider from '../auth/oauth1';
@@ -62,6 +63,19 @@ if ( config[ 'wordpress.org' ] ) {
 				);
 			}
 			return createCoreApi( authProvider, name, `${ url }/wp-json/` );
+		} )
+	);
+}
+
+// Loading WP.org APIs
+if ( config[ 'woocommerce' ] ) {
+	APIs = APIs.concat(
+		config[ 'woocommerce' ].map( site => {
+			let authProvider;
+			const { name } = site;
+			const url = site.url.replace( /\/+$/, '' );
+			authProvider = createBasicAuthProvider( name, url, site.authHeader );
+			return createWooCommerceApi( authProvider, name, `${ url }/wp-json/` );
 		} )
 	);
 }
