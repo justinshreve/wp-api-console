@@ -5,6 +5,7 @@ import createDotComApi from './com';
 import createOauth2Provider from '../auth/oauth2';
 import createOauth1Provider from '../auth/oauth1';
 import createBasicAuthProvider from '../auth/basic';
+import createWooCommerceAuthProvider from '../auth/woocommerce';
 import * as proxy from '../auth/proxy';
 
 
@@ -72,9 +73,9 @@ if ( config[ 'woocommerce' ] ) {
 	APIs = APIs.concat(
 		config[ 'woocommerce' ].map( site => {
 			let authProvider;
-			const { name } = site;
+			const { name, consumerKey, consumerSecret } = site;
 			const url = site.url.replace( /\/+$/, '' );
-			authProvider = createBasicAuthProvider( name, url, site.authHeader );
+			authProvider = createWooCommerceAuthProvider( name, url, consumerKey, consumerSecret );
 			return createWooCommerceApi( authProvider, name, `${ url }/wp-json/` );
 		} )
 	);
